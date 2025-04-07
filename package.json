@@ -1,0 +1,26 @@
+{
+  "name": "practico1webii",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/PaulAmaya/Practico1WebII#readme",
+  "bugs": {
+    "url": "https://github.com/PaulAmaya/Practico1WebII/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulAmaya/Practico1WebII.git"
+  },
+  "license": "ISC",
+  "author": "Paul Amaya",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.5",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.9"
+  }
+}
