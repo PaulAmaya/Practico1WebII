@@ -1,25 +1,25 @@
-const { DataTypes } = require("sequelize");
 
-module.exports = function (sequelize) {
-    const Burger = sequelize.define('Burger', {
+module.exports =  (sequelize, Sequelize) => {
+
+    const Burger = sequelize.define("burger", {
         name: {
-            type: DataTypes.STRING,
-            allowNull: false,
+            type: Sequelize.STRING,
         },
         price: {
-            type: DataTypes.FLOAT,
-            allowNull: false,
+            type: Sequelize.FLOAT,
         },
         description: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
         },
-        photo: {
-            type: DataTypes.STRING,
+        image: {
+            type: Sequelize.STRING,
         },
         restaurantId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
+            type: Sequelize.INTEGER,
+            
         },
+    }, {
+        timestamps: false,
     });
 
     return Burger;

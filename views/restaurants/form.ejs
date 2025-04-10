@@ -1,0 +1,24 @@
+<%- include('../../components/adminHeader.ejs') %>
+<div class="container mt-5">
+    <h2><%= restaurant ? 'Editar Restaurante' : 'Crear Restaurante' %></h2>
+    <form method="post" action="<%= restaurant ? '/restaurants/' + restaurant.id : '/restaurants/create' %>" enctype="multipart/form-data">
+        <div class="form-group mt-3">
+            <label for="name">Nombre del Restaurante</label>
+            <input type="text" class="form-control" id="name" name="name" value="<%= restaurant ? restaurant.name : '' %>" placeholder="Nombre del Restaurante" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="address">Dirección</label>
+            <input type="text" class="form-control" id="address" name="address" value="<%= restaurant ? restaurant.address : '' %>" placeholder="Dirección del Restaurante" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="logo">Logo</label>
+            <input type="file" class="form-control" id="logo" name="logo" <%= restaurant ? '' : 'required' %>>
+            <% if (restaurant) { %>
+                <p class="mt-2">Logo actual:</p>
+                <img src="/images/restaurants/<%= restaurant.id %>.jpg" alt="<%= restaurant.name %>" style="width: 120px;">
+            <% } %>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3"><%= restaurant ? 'Actualizar Restaurante' : 'Crear Restaurante' %></button>
+    </form>
+</div>
+<%- include('../../components/footer.ejs') %>

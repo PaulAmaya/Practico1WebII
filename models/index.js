@@ -1,20 +1,27 @@
-const { sequelize } = require("../config/db.config");
-const burger = require("./burgerModel")(sequelize);
-const restaurant = require("./restaurantModel")(sequelize);
+const dbConfig = require("../config/db.config.js");
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize(
+    dbConfig.DB,
+    dbConfig.USER,
+    dbConfig.PASSWORD,
+    {
+        host: dbConfig.HOST,
+        port: dbConfig.PORT,
+        dialect: "mysql",
+    }
+);
 
-burger.hasMany(restaurant, { 
-    foreignKey: "restaurantId", 
-    sourceKey: "id",
-    as: "burgers"
-});
-restaurant.belongsTo(burger, { 
-    foreignKey: "restaurantId", 
+const db = {};
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+
+db.burger = require("./burgerModel.js")(sequelize, Sequelize);
+db.restaurant = require("./restaurantModel.js")(sequelize, Sequelize);
+
+db.burger.belongsTo(db.restaurant, { 
+    foreignKey: "restaurantId",
     as: "restaurant"
 });
+db.restaurant.hasMany(db.burger, { as: "burger" });
 
-module.exports = {
-    burger,
-    restaurant,
-    sequelize,
-    Sequelize: sequelize.Sequelize,
-};
+module.exports = db;

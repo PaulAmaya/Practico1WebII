@@ -1,0 +1,39 @@
+<%- include('../../components/adminHeader.ejs') %>
+<div class="container mt-5">
+    <h2>Lista de Hamburguesas</h2>
+    <a href="/burgers/create" class="btn btn-success mb-3">Crear nueva hamburguesa</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Foto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% burger.forEach(burger => { %>
+                <tr>
+                    <td><%= burger.name %></td>
+                    <td><%= burger.description %></td>
+                    <td>$<%= burger.price.toFixed(2) %></td>
+                    <td>
+                        <% if (burger.image) { %>
+                            <img src="/images/burgers/<%= burger.id %>.jpg" alt="<%= burger.name %>" style="width: 100px; height: auto;">
+                        <% } else { %>
+                            No image
+                        <% } %>
+                    </td>
+                    <td>
+                        <a href="/burgers/<%= burger.id %>" class="btn btn-warning btn-sm">Editar</a>
+                        <form method="post" action="/burgers/<%= burger.id %>/delete" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include('../../components/footer.ejs') %>

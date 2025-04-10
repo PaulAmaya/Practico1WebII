@@ -1,0 +1,25 @@
+<%- include('../components/adminHeader.ejs') %>
+<div class="container mt-5">
+    <h2>Admin Panel - Burger Week</h2>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Administrar Restaurantes</h5>
+                    <a href="/restaurants" class="btn btn-outline-primary">Lista de Restaurantes</a>
+                    <a href="/restaurants/create" class="btn btn-primary mt-2">Añadir un nuevo restaurante</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Administrar Hamburguesas</h5>
+                    <a href="/burgers" class="btn btn-outline-success">Lista de Hamburguesas</a>
+                    <a href="/burgers/create" class="btn btn-success mt-2">añadir una nueva Hamburguesa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../components/footer.ejs') %>

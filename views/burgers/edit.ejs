@@ -1,0 +1,28 @@
+<%- include('../../components/adminHeader.ejs') %>
+
+<div class="container mt-5">
+    <h2><%= burger ? 'Editar Hamburguesa' : 'Crear Hamburguesa' %></h2>
+    <form method="post" action="<%= burger ? ('/burgers/' + burger.id) : '/burgers/create' %>" enctype="multipart/form-data">
+        <div class="form-group mt-3">
+            <label for="name">Nombre de la Hamburguesa</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Nombre de la Hamburguesa" value="<%= burger ? burger.name : '' %>" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="description">Descripción</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Descripción" required><%= burger ? burger.description : '' %></textarea>
+        </div>
+        <div class="form-group mt-3">
+            <label for="price">Precio</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Precio" value="<%= burger ? burger.price : '' %>" required>
+        </div>
+        <div class="form-group mt-3">
+            <label for="photo">Foto</label>
+            <input type="file" class="form-control" id="image" name="image" <%= burger ? '' : 'required' %>>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">
+            <%= burger ? 'Actualizar Hamburguesa' : 'Crear Hamburguesa' %>
+        </button>
+    </form>
+</div>
+
+<%- include('../../components/footer.ejs') %>

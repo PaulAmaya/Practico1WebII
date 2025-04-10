@@ -13,7 +13,6 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 const db = require("./models");
-const session = require('express-session');
 
 db.sequelize.sync({
     //force: true // drop tables and recreate
@@ -21,18 +20,12 @@ db.sequelize.sync({
     console.log("db resync");
 });
 
-app.get('/holamundo', function(req, res) {
-    res.send('Hola Mundo');
-})
 
-app.use(session({
-    secret: 'keyboard cat'
-}));
+app.get("/admin", (req, res) => {
+    res.render("admin");
+});
 
-app.use(function (req, res, next) {
-    res.locals.usuario = req.session.usuario;
-    next();
-}); 
+
 
 require('./routes')(app);
 
